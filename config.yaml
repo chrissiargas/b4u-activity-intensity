@@ -1,0 +1,35 @@
+acceleration:
+  fs: 10
+  signals: [norm_xyz, jerk]
+  threshold: 60 #seconds
+  length: 600 #samples
+  stride: 600
+  bag_size: 3
+  bag_step: 600
+  form: spectrogram
+  combine: concat
+  f_interp: log
+  log_power: true
+  stft_duration: 10 #seconds
+  stft_overlap: 9
+
+location:
+  T: 60
+  signals: [velocity, acceleration]
+  length: 12 #samples
+  stride: 1
+  sync_thres: 60 #seconds
+  features: [moveability, mean, std]
+
+HR:
+  T: 30
+  sync_thres: 60
+
+inference:
+  architecture: fusion_MIL
+  embedding_size: 256
+  postprocess: false
+
+
+
+
